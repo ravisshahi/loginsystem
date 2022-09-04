@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<p>Add Role to user</p>
+	<!-- we use *  to POST data and  $ to GET data i.e. *{varName} & i${varName}  -->
+	<form action="#" th:action="@{/roleform}" th:object="${role}"
+		th:method="post">
+		
+		<p>
+			User Id : <input type="text" th:field="*{userId}" />
+		</p>
+
+		<p th:method="post" th:object="${user}">User Id</p>
+		<p>
+			Role Name : <input type="text" th:field="*{name}" />
+		</p>
+		<p>
+			<input type="submit" value="Submit" />
+		</p>
+	</form>
+
+	<p th:text="${roleData}" />
+
+	<p>
+		<a th:href="@{/home}">Logout</a>
+	</p>
+</body>
+</html>

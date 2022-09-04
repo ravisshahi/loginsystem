@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>List</title>
+
+</head>
+<body>
+
+	<p>
+		<a th:href="@{/home}">Registration and Login System</a>
+	<p>
+		<a th:href="@{/home}">Logout</a>
+	</p>
+
+	<p>
+	<h2>List of Registered Users</h2>
+	</p>
+
+	<table class="table-hover">
+		<thead class="table">
+			<tr>
+				<p>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+				</p>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:object="${userdetails}" th:each="user : ${listOfUsers}">
+				<td th:text="${user.firstName}"></td>
+				<td th:text="${user.lastName}"></td>
+				<td th:text="${user.email}"></td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>
