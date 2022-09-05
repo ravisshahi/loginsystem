@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.prodapt.userdemo.entity.User;
@@ -29,7 +30,7 @@ public class AdminController {
 		return "home";
 	}
 
-	@GetMapping("/update")
+	@RequestMapping("/update")
 	public String update(@ModelAttribute("user") User user, @ModelAttribute("userdetails") UserDetails userdetails) {
 		return "update";
 	}
@@ -37,10 +38,9 @@ public class AdminController {
 	@PutMapping("/updated")
 	public ModelAndView updatedUser(@ModelAttribute("user") User user,
 			@ModelAttribute("userdetails") UserDetails userdetails) {
-		user.setUserDetails(userdetails);
-		
-		User userData = userService.updateUser(user);
 		ModelAndView mv = new ModelAndView();
+		user.setUserDetails(userdetails);
+		User userData = userService.updateUser(user);
 		mv.setViewName("update");
 		mv.addObject("updatedData", userData);
 		return mv;
@@ -53,10 +53,12 @@ public class AdminController {
 
 	@DeleteMapping("/deleteuser")
 	public ModelAndView deleteUser(@ModelAttribute("user") User user) {
+		
 		userService.deleteUserById(user.getUserId());
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("delete");
-		mv.addObject("msg", "Deleted Successfully");
+		mv.addObject("msg", " User Successfully Deleted" );
+		
 		return mv;
 
 	}

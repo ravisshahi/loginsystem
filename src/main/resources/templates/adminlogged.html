@@ -8,7 +8,10 @@
 <body>
 
 	<a th:href="@{/home}">Registration and Login System</a>
-	<p>Welcome Admin</p>
+	<p>
+		Welcome Admin <a th:text="${user.userName}"></a>
+	</p>
+
 	<p>
 		<a th:href="@{/list}">User's List</a>
 	</p>

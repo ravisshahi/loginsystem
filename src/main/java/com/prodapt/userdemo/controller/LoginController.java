@@ -35,5 +35,6 @@ public class LoginController {
 	@GetMapping("/loginform")
 	public String showLoginForm(@ModelAttribute("user") User user) {
 		return "login";
-	}
+	}	
+	
 }
